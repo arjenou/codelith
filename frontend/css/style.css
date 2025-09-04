@@ -1,0 +1,147 @@
+
+/* intelligence_software_company_website/frontend/css/style.css */
+:root {
+  --primary-color: #4f46e5;
+  --primary-dark: #4338ca;
+  --secondary-color: #7c3aed;
+  --dark-bg: #1a1a2e;
+  --darker-bg: #16213e;
+  --text-light: #e6e6e6;
+  --text-gray: #9ca3af;
+  --gray-bg: #1f2937;
+  --gray-border: #4b5563;
+}
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+  color: var(--text-light);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* 服务卡片样式 */
+.service-card {
+  background-color: rgba(31, 41, 55, 0.6);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+  border-color: var(--primary-color);
+}
+
+.service-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.service-card p {
+  color: var(--text-gray);
+  margin-bottom: 1.5rem;
+}
+
+.service-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+/* 产品分类样式 */
+.product-category {
+  margin-bottom: 3rem;
+}
+
+.product-category h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.product-category h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3rem;
+  height: 3px;
+  background: var(--primary-color);
+}
+
+.product-item {
+  background-color: rgba(31, 41, 55, 0.6);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+}
+
+.product-item h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+.product-item p {
+  color: var(--text-gray);
+  margin-bottom: 1rem;
+  font-size: 0.9375rem;
+}
+
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.product-tag {
+  background-color: rgba(79, 70, 229, 0.2);
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .service-card {
+    padding: 1.5rem;
+  }
+  
+  .product-category h2 {
+    font-size: 1.5rem;
+  }
+  
+  .product-item {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-card {
+    padding: 2.5rem;
+  }
+  
+  .product-category h2 {
+    font-size: 2rem;
+  }
+}

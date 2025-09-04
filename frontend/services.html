@@ -1,0 +1,379 @@
+
+<!-- intelligence_software_company_website/frontend/services.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="FHkMWxhKei-kPC1p6s53oM-jSr1tTlFGNJHvLgJFQYo">
+    <title>サービス - 株式会社Codelith</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.loli.net/css?family=Noto+Sans+SC:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e6e6e6;
+            min-height: 100vh;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px rgba(100, 149, 237, 0.8);
+        }
+        .solution-card {
+            transition: all 0.3s ease;
+        }
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.3);
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .solution-section {
+            background: rgba(31, 41, 55, 0.6);
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- パーティクル背景 -->
+    <div id="particles-js"></div>
+    
+    <!-- ナビゲーションバー -->
+    <nav class="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-bold text-indigo-400">💻 株式会社Codelith</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ホーム</a>
+                        <a href="about.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">会社概要</a>
+                        <a href="services.html" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium bg-indigo-900">サービス</a>
+                        <a href="products.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">製品</a>
+                        <a href="contact.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">お問い合わせ</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="mobile-menu-button p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round", stroke-linejoin="round", stroke-width="2", d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ -->
+    <main class="pt-20">
+        <!-- サービス紹介 -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">私たちの<span class="text-indigo-400">サービス</span></h1>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        お客様のビジネス課題を解決するための包括的なITソリューションを提供します
+                    </p>
+                </div>
+
+                <!-- 課題・目的から探す -->
+                <div class="mb-20">
+                    <h2 class="text-3xl font-bold text-center text-white mb-12">課題・目的から探す</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                            <div class="text-indigo-400 text-4xl mb-4">💼</div>
+                            <h3 class="text-xl font-bold text-white mb-3">経営のためのシステム導入</h3>
+                            <p class="text-gray-300 mb-4">中長期的に経営管理を支える基幹システムの導入を支援します</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細 →</a>
+                        </div>
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                            <div class="text-indigo-400 text-4xl mb-4">🔄</div>
+                            <h3 class="text-xl font-bold text-white mb-3">移行・バージョンアップ</h3>
+                            <p class="text-gray-300 mb-4">最新システムへの移行やバージョンアップを柔軟に支援</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細 →</a>
+                        </div>
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                            <div class="text-indigo-400 text-4xl mb-4">🔗</div>
+                            <h3 class="text-xl font-bold text-white mb-3">システム連携</h3>
+                            <p class="text-gray-300 mb-4">社内外システムとのデータフローの集中管理を実現</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細 →</a>
+                        </div>
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                            <div class="text-indigo-400 text-4xl mb-4">🧠</div>
+                            <h3 class="text-xl font-bold text-white mb-3">DX人材育成</h3>
+                            <p class="text-gray-300 mb-4">ニーズ発見・課題解決力向上のための研修を支援</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細 →</a>
+                        </div>
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                            <div class="text-indigo-400 text-4xl mb-4">📊</div>
+                            <h3 class="text-xl font-bold text-white mb-3">経費管理システム</h3>
+                            <p class="text-gray-300 mb-4">経費清算・管理を効率化するシステム導入を支援</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細 →</a>
+                        </div>
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                            <div class="text-indigo-400 text-4xl mb-4">🛡️</div>
+                            <h3 class="text-xl font-bold text-white mb-3">運用保守</h3>
+                            <p class="text-gray-300 mb-4">サブスクリプション型の高品質な運用保守サービス</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細 →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 導入支援 -->
+                <div class="solution-section p-8 mb-12">
+                    <h2 class="text-2xl font-bold text-white mb-6">導入支援</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-3">Webシステム導入サービス</h3>
+                            <p class="text-gray-300 mb-4">中堅・成長企業向けのWebシステム導入・運用保守を一気通貫でご支援</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細を見る →</a>
+                        </div>
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-3">短期導入サービス「RAPID」</h3>
+                            <p class="text-gray-300 mb-4">実績あるテンプレートを活用した迅速なシステム導入ソリューション</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細を見る →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 移行・バージョンアップ支援 -->
+                <div class="solution-section p-8 mb-12">
+                    <h2 class="text-2xl font-bold text-white mb-6">移行・バージョンアップ支援</h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-3">最新システム移行サービス</h3>
+                            <p class="text-gray-300 mb-4">既存システムから最新システムへの移行をサポート</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細を見る →</a>
+                        </div>
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-3">バージョンアップサービス</h3>
+                            <p class="text-gray-300 mb-4">システム移行・導入後のバージョンアップ支援</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細を見る →</a>
+                        </div>
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-3">アセスメントサービス</h3>
+                            <p class="text-gray-300 mb-4">システム使用状況を分析し、最新システムへの移行をサポート</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細を見る →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- デザイン思考 -->
+                <div class="solution-section p-8 mb-12">
+                    <h2 class="text-2xl font-bold text-white mb-6">デザイン思考</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-3">DX人材育成研修サービス</h3>
+                            <p class="text-gray-300 mb-4">e-learning研修とワークショップによる人材育成サービス</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細を見る →</a>
+                        </div>
+                        <div class="solution-card bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-3">デザイン思考サービス</h3>
+                            <p class="text-gray-300 mb-4">イノベーション創出、課題解決にも活用できるデザイン思考支援</p>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細を見る →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 運用保守 -->
+                <div class="solution-section p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6">運用保守</h2>
+                    <div class="bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <h3 class="text-xl font-bold text-white mb-4">リモート運用保守サービス</h3>
+                        <p class="text-gray-300 mb-6">作業量に合わせてサービスを選択できるサブスクリプション型運用保守サービス</p>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div>
+                                <h4 class="text-lg font-semibold text-indigo-400 mb-2">高品質サービス</h4>
+                                <p class="text-gray-300">専門チームによる高品質な運用保守</p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-indigo-400 mb-2">柔軟なプラン</h4>
+                                <p class="text-gray-300">お客様のニーズに合わせた柔軟なサービス提供</p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-indigo-400 mb-2">コスト削減</h4>
+                                <p class="text-gray-300">必要な時に必要な量のサービスでコスト削減</p>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-block mt-6 text-indigo-400 hover:text-indigo-300 font-medium">詳細を見る →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-gray-900 bg-opacity-90 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">💻 株式会社Codelith</h3>
+                    <p class="text-gray-400">東京都荒川区を拠点に、Webシステム開発から人材育成まで、お客様のビジネス成長を支えるITソリューションを提供しています。</p>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">クイックリンク</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">ホーム</a></li>
+                        <li><a href="about.html", class="text-gray-400 hover:text-white transition">会社概要</a></li>
+                        <li><a href="services.html", class="text-gray-400 hover:text-white transition">サービス</a></li>
+                        <li><a href="products.html", class="text-gray-400 hover:text-white transition">製品</a></li>
+                        <li><a href="contact.html", class="text-gray-400 hover:text-white transition">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">連絡先</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>東京都荒川区東日暮里2-11-11 4F</li>
+                        <li>電話: 090 6299 6409</li>
+                        <li>メール: info@codelith.co.jp</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">フォローする</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">Twitter</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">Facebook</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>© 2025 株式会社Codelith. 全著作権所有.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- スクリプト -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // パーティクル効果初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 70,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#6366f1"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#4f46e5",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // モバイルメニュー切り替え
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                alert('モバイルメニュー機能は開発中です');
+            });
+        });
+    </script>
+</body>
+</html>

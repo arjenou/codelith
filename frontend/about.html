@@ -1,0 +1,416 @@
+
+<!-- intelligence_software_company_website/frontend/about.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="FHkMWxhKei-kPC1p6s53oM-jSr1tTlFGNJHvLgJFQYo">
+    <title>会社概要 - 株式会社Codelith</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.loli.net/css?family=Noto+Sans+SC:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e6e6e6;
+            min-height: 100vh;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px rgba(100, 149, 237, 0.8);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #4f46e5;
+            border: 3px solid #6366f1;
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.3);
+        }
+        .value-card {
+            transition: all 0.3s ease;
+        }
+        .value-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- パーティクル背景 -->
+    <div id="particles-js"></div>
+    
+    <!-- ナビゲーションバー -->
+    <nav class="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-bold text-indigo-400">💻 株式会社Codelith</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ホーム</a>
+                        <a href="about.html" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium bg-indigo-900">会社概要</a>
+                        <a href="services.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">サービス</a>
+                        <a href="products.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">製品</a>
+                        <a href="contact.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">お問い合わせ</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="mobile-menu-button p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ -->
+    <main class="pt-20">
+        <!-- 会社概要 -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6"><span class="text-indigo-400">株式会社Codelith</span>について</h1>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Webシステム開発から人材育成まで、お客様のビジネス成長を支える包括的なITソリューションを提供します。
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-6">私たちの使命</h2>
+                        <p class="text-gray-300 mb-6">
+                            株式会社Codelithは、デジタルトランスフォー�メーションの時代において、お客様のビジネスを支える革新的な技術ソリューションを提供します。
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            私たちはWebシステム開発、ソフトウェア開発、ECソリューション、人材育成など、多岐にわたるサービスを通じて、お客様のデジタル化を全面的にサポートします。
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="bg-indigo-900 bg-opacity-50 px-4 py-2 rounded-full">
+                                <span class="text-white">💻 Web開発</span>
+                            </div>
+                            <div class="bg-indigo-900 bg-opacity-50 px-4 py-2 rounded-full">
+                                <span class="text-white">🛒 ECソリューション</span>
+                            </div>
+                            <div class="bg-indigo-900 bg-opacity-50 px-4 py-2 rounded-full">
+                                <span class="text-white">🌐 コンテンツ開発</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 bg-opacity-60 rounded-xl overflow-hidden">
+                        <img src="https://picsum.photos/800/500?random=1" alt="会社のオフィス環境" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 企業理念 -->
+        <section class="py-20 bg-gray-900 bg-opacity-80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-white mb-16">企業理念</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="value-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="text-indigo-400 text-4xl mb-4">🌟</div>
+                        <h3 class="text-xl font-bold text-white mb-3">ミッション</h3>
+                        <p class="text-gray-300">デジタル技術を通じて、お客様のビジネス変革を支援し、社会の発展に貢献します</p>
+                    </div>
+                    <div class="value-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="text-indigo-400 text-4xl mb-4">🔮</div>
+                        <h3 class="text-xl font-bold text-white mb-3">ビジョン</h3>
+                        <p class="text-gray-300">テクノロジーと人間の調和を追求し、持続可能な未来を創造します</p>
+                    </div>
+                    <div class="value-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="text-indigo-400 text-4xl mb-4">💎</div>
+                        <h3 class="text-xl font-bold text-white mb-3">バリュー</h3>
+                        <p class="text-gray-300">誠実さ、革新性、協働を重視し、常にお客様視点で行動します</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 発展の歴史 -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-white mb-16">発展の歴史</h2>
+                <div class="relative pl-12">
+                    <div class="absolute left-6 top-0 h-full w-1 bg-indigo-900"></div>
+                    
+                    <div class="timeline-item relative mb-12">
+                        <div class="bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-2">2025年 - 会社設立</h3>
+                            <p class="text-gray-300">東京都荒川区にて設立され、Webシステム開発サービスを開始</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item relative mb-12">
+                        <div class="bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-2">2022年 - SAP開発事業開始</h3>
+                            <p class="text-gray-300">SAPシステム開発の専門チームを結成し、大規模ERP導入プロジェクトを開始</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item relative mb-12">
+                        <div class="bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-2">2026年 - 外国人IT人材事業開始</h3>
+                            <p class="text-gray-300">外国人エンジニアの就労支援とコンサルティング業務を開始</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item relative mb-12">
+                        <div class="bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-2">2028年 - ECソリューション拡大</h3>
+                            <p class="text-gray-300">インターネットを利用した通信販売プラットフォームの開発に注力</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item relative">
+                        <div class="bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-2">2030年 - 教育事業開始</h3>
+                            <p class="text-gray-300">IT人材育成のための教育事業を開始し、総合ITサービス企業へ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 私たちの強み -->
+        <section class="py-20 bg-gray-900 bg-opacity-80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-white mb-16">私たちの強み</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">💡</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">専門知識</h3>
+                        <p class="text-gray-300">各分野の専門家が在籍し、最新技術と豊富な経験を活かしたソリューションを提供</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">🤝</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">顧客第一</h3>
+                        <p class="text-gray-300">お客様のビジネスを深く理解し、最適なソリューションを提案します</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">🚀</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">迅速対応</h3>
+                        <p class="text-gray-300">アジャイルな開発手法で，迅速かつ柔軟な対応を実現</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- チーム紹介 -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-white mb-16">コアチーム</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="team-card bg-gray-800 bg-opacity-60 p-8 rounded-xl transition-all duration-300">
+                        <img src="https://picsum.photos/200/200?random=2" alt="代表取締役" class="w-32 h-32 rounded-full mx-auto mb-6">
+                        <h3 class="text-xl font-bold text-white text-center mb-2">賀 田倉子</h3>
+                        <p class="text-indigo-400 text-center mb-4">代表取締役</p>
+                        <p class="text-gray-300 text-center">IT業界経験を持ち、複数のスタートアップを成功させたベテラン経営者</p>
+                    </div>
+                    <div class="team-card bg-gray-800 bg-opacity-60 p-8 rounded-xl transition-all duration-300">
+                        <img src="https://picsum.photos/200/200?random=3" alt="CTO" class="w-32 h-32 rounded-full mx-auto mb-6">
+                        <h3 class="text-xl font-bold text-white text-center mb-2">付宁</h3>
+                        <p class="text-indigo-400 text-center mb-4">最高技術責任者</p>
+                        <p class="text-gray-300 text-center">SAPシステム開発のエキスパートで、大規模システム構築の豊富な経験を持つ</p>
+                    </div>
+                    <div class="team-card bg-gray-800 bg-opacity-60 p-8 rounded-xl transition-all duration-300">
+                        <img src="https://picsum.photos/200/200?random=4" alt="人事部長" class="w-32 h-32 rounded-full mx-auto mb-6">
+                        <h3 class="text-xl font-bold text-white text-center mb-2">李尚堯</h3>
+                        <p class="text-indigo-400 text-center mb-4">人事部長</p>
+                        <p class="text-gray-300 text-center">外国人IT人材の採用・育成の専門家で、多文化チーム構築のスペシャリスト</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-gray-900 bg-opacity-90 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">💻 株式会社Codelith</h3>
+                    <p class="text-gray-400">東京都荒川区を拠点に、Webシステム開発から人材育成まで，お客様のビジネス成長を支えるITソリューションを提供しています。</p>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">クイックリンク</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">ホーム</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">会社概要</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition">サービス</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white transition">製品</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">連絡先</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>東京都荒川区東日暮里2-11-11 4F</li>
+                        <li>電話: 090 6299 6409</li>
+                        <li>メール: info@codelith.co.jp</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">フォローする</h3>
+                    <div class="flex space-x-4">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>© 2025 株式会社Codelith. 全著作権所有.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- スクリプト -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // パーティクル効果初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 60,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#6366f1"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#4f46e5",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "g grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // モバイルメニュー切り替え
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                alert('モバイルメニュー機能は開発中です');
+            });
+        });
+    </script>
+</body>
+</html>
