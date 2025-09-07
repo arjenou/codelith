@@ -82,6 +82,17 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900 bg-opacity-95">
+                <a href="about.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">会社概要</a>
+                <a href="business.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">事業内容</a>
+                <a href="partner.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">ビジネスパートナー募集</a>
+                <a href="recruitment.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">採用情報</a>
+                <a href="contact.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">お問い合わせ</a>
+            </div>
+        </div>
     </nav>
 
     <!-- メインコンテンツ -->
@@ -329,9 +340,10 @@
 
             // モバイルメニュー切り替え
             const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
             
             mobileMenuButton.addEventListener('click', function() {
-                alert('モバイルメニュー機能は開発中です');
+                mobileMenu.classList.toggle('hidden');
             });
         });
     </script>
