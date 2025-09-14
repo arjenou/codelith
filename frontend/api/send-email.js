@@ -1,36 +1,48 @@
 // Vercel API 路由：发送邮件 (使用成功验证的 Gmail SMTP 方案)
-const nodemailer = require('nodemailer');
+let nodemailer;
+let transporter;
 
-// 创建邮件传输器
-const transporter = nodemailer.createTransporter({
-  service: 'gmail',
-  auth: {
-    user: 'wangyunjie1101@gmail.com',
-    pass: 'ibfkmjwbuwwxcefn' // 你的 Gmail 应用密码
-  }
-});
-
-// 验证邮件配置
-transporter.verify(function(error, success) {
-  if (error) {
-    console.log('SMTP サーバー接続失敗:', error);
-  } else {
-    console.log('SMTP サーバー接続成功');
-  }
-});
+// 安全加载 nodemailer
+try {
+  nodemailer = require('nodemailer');
+  
+  // 创建邮件传输器
+  transporter = nodemailer.createTransporter({
+    service: 'gmail',
+    auth: {
+      user: 'wangyunjie1101@gmail.com',
+      pass: 'ibfkmjwbuwwxcefn' // 你的 Gmail 应用密码
+    }
+  });
+  
+  console.log('Nodemailer loaded successfully');
+} catch (loadError) {
+  console.error('Failed to load nodemailer:', loadError);
+}
 
 module.exports = async function handler(req, res) {
-  // 设置 CORS 头
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  // 只允许 POST 请求
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
+  // 全局错误处理
   try {
+    // 设置 CORS 头和内容类型
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Content-Type', 'application/json');
+
+    // 只允许 POST 请求
+    if (req.method !== 'POST') {
+      return res.status(405).json({ error: 'Method not allowed' });
+    }
+
+    console.log('API endpoint called, method:', req.method);
+    // 检查 nodemailer 是否成功加载
+    if (!nodemailer || !transporter) {
+      console.error('Nodemailer not available');
+      return res.status(500).json({ 
+        error: 'メールサービスが利用できません。しばらく時間をおいて再度お試しください。' 
+      });
+    }
+
     const { name, email, phone, subject, message } = req.body;
 
     console.log('Received form data:', { name, email, phone, subject, message });
@@ -120,10 +132,26 @@ module.exports = async function handler(req, res) {
       messageId: info.messageId 
     });
 
-  } catch (error) {
-    console.error('メール送信失敗:', error);
-    return res.status(500).json({ 
-      error: 'メールの送信に失敗しました。しばらく時間をおいて再度お試しください。' 
-    });
+    } catch (error) {
+      console.error('メール送信失敗:', error);
+      return res.status(500).json({ 
+        error: 'メールの送信に失敗しました。しばらく時間をおいて再度お試しください。' 
+      });
+    }
+  } catch (globalError) {
+    console.error('Global error in API handler:', globalError);
+    
+    // 确保总是返回 JSON 响应
+    try {
+      res.setHeader('Content-Type', 'application/json');
+      return res.status(500).json({ 
+        error: 'サーバーエラーが発生しました。しばらく時間をおいて再度お試しください。',
+        details: globalError.message 
+      });
+    } catch (responseError) {
+      console.error('Failed to send error response:', responseError);
+      // 如果连 JSON 响应都发送不了，至少记录错误
+      return res.status(500).end('Internal Server Error');
+    }
   }
 }
