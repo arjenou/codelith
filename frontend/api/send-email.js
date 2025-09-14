@@ -2,6 +2,11 @@
 const nodemailer = require('nodemailer');
 
 module.exports = async function handler(req, res) {
+  // 设置 CORS 头
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   // 只允许 POST 请求
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -15,12 +20,17 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ error: 'お名前、メールアドレス、メッセージ内容は必須項目です' });
     }
 
-    // 创建邮件传输器 (使用 Gmail SMTP)
+    // 创建邮件传输器 (使用更明确的 SMTP 配置)
     const transporter = nodemailer.createTransporter({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // true for 465, false for other ports
       auth: {
-        user: 'wangyunjie1101@gmail.com', // 发送邮件的 Gmail 账户
-        pass: 'ibfkmjwbuwwxcefn'        // Gmail 应用密码
+        user: 'wangyunjie1101@gmail.com',
+        pass: 'ibfkmjwbuwwxcefn'
+      },
+      tls: {
+        rejectUnauthorized: false
       }
     });
 
@@ -80,8 +90,13 @@ module.exports = async function handler(req, res) {
       `
     };
 
+    // 测试连接
+    await transporter.verify();
+    console.log('SMTP connection verified successfully');
+
     // 发送邮件
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully:', info.messageId);
 
     // 返回成功响应
     res.status(200).json({ 
