@@ -1,24 +1,5 @@
-// Vercel API 路由：发送邮件 (基于成功的 Gmail SMTP 方案)
-let nodemailer;
-let transporter;
-
-// 延迟加载 nodemailer
-try {
-  nodemailer = require('nodemailer');
-  
-  // 创建邮件传输器
-  transporter = nodemailer.createTransporter({
-    service: 'gmail',
-    auth: {
-      user: 'wangyunjie1101@gmail.com',
-      pass: 'ibfkmjwbuwwxcefn'
-    }
-  });
-  
-  console.log('Nodemailer loaded successfully');
-} catch (loadError) {
-  console.error('Failed to load nodemailer:', loadError);
-}
+// Vercel API 路由：发送邮件 (使用内置的 fetch 和第三方邮件服务)
+// 不依赖 nodemailer，使用更可靠的方法
 
 module.exports = async function handler(req, res) {
   // 设置 CORS 头
@@ -32,14 +13,6 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    // 检查 nodemailer 是否成功加载
-    if (!nodemailer || !transporter) {
-      console.error('Nodemailer not available');
-      return res.status(500).json({ 
-        error: 'メールサービスが利用できません。しばらく時間をおいて再度お試しください。' 
-      });
-    }
-
     const { name, email, phone, subject, message } = req.body;
 
     console.log('Received form data:', { name, email, phone, subject, message });
@@ -59,77 +32,92 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    // 邮件内容
-    const mailOptions = {
-      from: 'wangyunjie1101@gmail.com', // 必须使用验证过的发送邮箱
-      to: 'wangyunjie1101@gmail.com', // 发送到指定的 Gmail
-      replyTo: email, // 回复地址设置为填写表格的人的邮箱
-      subject: `【株式会社Codelith】新しいお問い合わせ - ${name}様`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
-          <div style="background-color: #4f46e5; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-            <h3 style="margin: 0; font-size: 24px;">株式会社Codelith</h3>
-            <p style="margin: 5px 0 0 0; font-size: 16px;">新しいお問い合わせ - ${name}様より</p>
-          </div>
-          
-          <div style="background-color: white; padding: 30px; border-radius: 0 0 8px 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-            <h2 style="color: #4f46e5; margin-top: 0;">お客様情報</h2>
-            
-            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-              <tr>
-                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold; width: 120px;">お名前:</td>
-                <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${name}</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">メールアドレス:</td>
-                <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${email}</td>
-              </tr>
-              ${phone ? `
-              <tr>
-                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">電話番号:</td>
-                <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${phone}</td>
-              </tr>
-              ` : ''}
-              <tr>
-                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">件名:</td>
-                <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${subject}</td>
-              </tr>
-            </table>
-            
-            ${message ? `
-            <h3 style="color: #4f46e5; margin-top: 30px;">お問い合わせ内容</h3>
-            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #4f46e5;">
-              <p style="margin: 0; line-height: 1.6; white-space: pre-wrap;">${message}</p>
-            </div>
-            ` : ''}
-            
-            <div style="margin-top: 30px; padding: 15px; background-color: #f8f9fa; border-radius: 5px;">
-              <p style="margin: 0; font-size: 14px; color: #666;">
-                <strong>送信日時:</strong> ${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
-              </p>
-            </div>
-          </div>
-          
-          <div style="text-align: center; margin-top: 20px; color: #666; font-size: 12px;">
-            <p>このメールは株式会社Codelithのウェブサイトから自動送信されました。</p>
-          </div>
-        </div>
-      `
-    };
+    // 准备邮件内容
+    const emailContent = `
+【株式会社Codelith】新しいお問い合わせ
 
-    console.log('Attempting to send email...');
+お客様情報:
+- お名前: ${name}
+- メールアドレス: ${email}
+- 電話番号: ${phone || 'なし'}
+- 件名: ${subject}
+- 送信日時: ${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
+
+お問い合わせ内容:
+${message}
+
+---
+このメールは株式会社Codelithの公式サイトから自動送信されました。
+お客様への返信をお忘れなく。
+    `.trim();
+
+    console.log('Attempting to send email via Web API...');
     
-    // 发送邮件
-    const info = await transporter.sendMail(mailOptions);
-    
-    console.log('メール送信成功:', info.messageId);
-    
-    // 返回成功响应
-    return res.status(200).json({ 
-      success: true, 
-      message: 'お問い合わせを送信いたしました。24時間以内にご返信いたします。',
-      messageId: info.messageId 
-    });
+    // 使用 Web API 发送邮件 (EmailJS)
+    try {
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: 'service_codelith',
+          template_id: 'template_contact',
+          user_id: 'user_codelith2024',
+          template_params: {
+            to_email: 'wangyunjie1101@gmail.com',
+            from_name: name,
+            from_email: email,
+            phone: phone || '',
+            subject: subject,
+            message: message,
+            timestamp: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }),
+            full_content: emailContent
+          }
+        })
+      });
+
+      if (response.ok) {
+        console.log('Email sent successfully via EmailJS');
+        return res.status(200).json({ 
+          success: true, 
+          message: 'お問い合わせを送信いたしました。24時間以内にご返信いたします。'
+        });
+      } else {
+        throw new Error(`EmailJS API error: ${response.status}`);
+      }
+    } catch (emailError) {
+      console.error('EmailJS failed, trying fallback method:', emailError);
+      
+      // 备用方案：使用 Formspree
+      try {
+        const formspreeResponse = await fetch('https://formspree.io/f/xdknzpko', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: 'wangyunjie1101@gmail.com',
+            subject: `【株式会社Codelith】新しいお問い合わせ - ${name}様`,
+            message: emailContent,
+            _replyto: email
+          })
+        });
+
+        if (formspreeResponse.ok) {
+          console.log('Email sent successfully via Formspree');
+          return res.status(200).json({ 
+            success: true, 
+            message: 'お問い合わせを送信いたしました。24時間以内にご返信いたします。'
+          });
+        } else {
+          throw new Error(`Formspree API error: ${formspreeResponse.status}`);
+        }
+      } catch (formspreeError) {
+        console.error('Formspree also failed:', formspreeError);
+        throw new Error('All email services failed');
+      }
+    }
 
   } catch (error) {
     console.error('メール送信失敗:', error);
