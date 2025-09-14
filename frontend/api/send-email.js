@@ -1,23 +1,24 @@
 // Vercel API 路由：发送邮件 (基于成功的 Gmail SMTP 方案)
-const nodemailer = require('nodemailer');
+let nodemailer;
+let transporter;
 
-// 创建邮件传输器
-const transporter = nodemailer.createTransporter({
-  service: 'gmail',
-  auth: {
-    user: 'wangyunjie1101@gmail.com',
-    pass: 'ibfkmjwbuwwxcefn'
-  }
-});
-
-// 验证邮件配置
-transporter.verify(function(error, success) {
-  if (error) {
-    console.log('SMTP サーバー接続失敗:', error);
-  } else {
-    console.log('SMTP サーバー接続成功');
-  }
-});
+// 延迟加载 nodemailer
+try {
+  nodemailer = require('nodemailer');
+  
+  // 创建邮件传输器
+  transporter = nodemailer.createTransporter({
+    service: 'gmail',
+    auth: {
+      user: 'wangyunjie1101@gmail.com',
+      pass: 'ibfkmjwbuwwxcefn'
+    }
+  });
+  
+  console.log('Nodemailer loaded successfully');
+} catch (loadError) {
+  console.error('Failed to load nodemailer:', loadError);
+}
 
 module.exports = async function handler(req, res) {
   // 设置 CORS 头
@@ -31,7 +32,17 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    // 检查 nodemailer 是否成功加载
+    if (!nodemailer || !transporter) {
+      console.error('Nodemailer not available');
+      return res.status(500).json({ 
+        error: 'メールサービスが利用できません。しばらく時間をおいて再度お試しください。' 
+      });
+    }
+
     const { name, email, phone, subject, message } = req.body;
+
+    console.log('Received form data:', { name, email, phone, subject, message });
 
     // 验证必填字段
     if (!name || !email || !message) {
@@ -106,13 +117,15 @@ module.exports = async function handler(req, res) {
       `
     };
 
+    console.log('Attempting to send email...');
+    
     // 发送邮件
     const info = await transporter.sendMail(mailOptions);
     
     console.log('メール送信成功:', info.messageId);
     
     // 返回成功响应
-    res.status(200).json({ 
+    return res.status(200).json({ 
       success: true, 
       message: 'お問い合わせを送信いたしました。24時間以内にご返信いたします。',
       messageId: info.messageId 
@@ -120,8 +133,12 @@ module.exports = async function handler(req, res) {
 
   } catch (error) {
     console.error('メール送信失敗:', error);
-    res.status(500).json({ 
-      error: 'メールの送信に失敗しました。しばらく時間をおいて再度お試しください。' 
+    console.error('Error stack:', error.stack);
+    
+    // 确保返回有效的 JSON
+    return res.status(500).json({ 
+      error: 'メールの送信に失敗しました。しばらく時間をおいて再度お試しください。',
+      details: error.message 
     });
   }
 }
