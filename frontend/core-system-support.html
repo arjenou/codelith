@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="google-site-verification" content="FHkMWxhKei-kPC1p6s53oM-jSr1tTlFGNJHvLgJFQYo">
-    <title>ビジネスパートナー募集 - 株式会社Codelith</title>
+    <title>基幹システム導入支援 - 株式会社Codelith</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.loli.net/css?family=Noto+Sans+SC:400,700&display=swap" rel="stylesheet">
     <style>
@@ -29,24 +29,37 @@
             left: 0;
             z-index: -1;
         }
-        .partner-card {
+        .service-card {
             transition: all 0.3s ease;
         }
-        .partner-card:hover {
+        .service-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: scale(1.02);
         }
         .section-divider {
             width: 100%;
             height: 2px;
             background: linear-gradient(90deg, transparent 0%, #4f46e5 50%, transparent 100%);
-            margin: 2rem 0;
+            margin: 3rem 0;
         }
-        .benefit-item {
-            transition: all 0.3s ease;
+        .service-item {
+            position: relative;
+            padding-left: 2rem;
         }
-        .benefit-item:hover {
-            transform: scale(1.02);
+        .service-item::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #4f46e5;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
         .dropdown {
             position: relative;
@@ -108,7 +121,7 @@
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="about.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">会社概要</a>
                         <div class="dropdown">
-                            <a href="business.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center">
+                            <a href="business.html" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium bg-indigo-900 flex items-center">
                                 事業内容
                                 <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -120,7 +133,7 @@
                                 <a href="core-system-support.html" class="dropdown-item">基幹システム導入</a>
                             </div>
                         </div>
-                        <a href="partner.html" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium bg-indigo-900">ビジネスパートナー募集</a>
+                        <a href="partner.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ビジネスパートナー募集</a>
                         <a href="recruitment.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">採用情報</a>
                         <a href="contact.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">お問い合わせ</a>
                     </div>
@@ -140,7 +153,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900 bg-opacity-95">
                 <a href="about.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">会社概要</a>
                 <div class="mobile-dropdown">
-                    <button class="mobile-dropdown-button nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left flex items-center justify-between">
+                    <button class="mobile-dropdown-button nav-link text-white block px-3 py-2 rounded-md text-base font-medium bg-indigo-900 w-full text-left flex items-center justify-between">
                         事業内容
                         <svg class="h-4 w-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -152,7 +165,7 @@
                         <a href="core-system-support.html" class="nav-link text-gray-400 hover:text-white block px-3 py-2 rounded-md text-sm font-medium">基幹システム導入</a>
                     </div>
                 </div>
-                <a href="partner.html" class="nav-link text-white block px-3 py-2 rounded-md text-base font-medium bg-indigo-900">ビジネスパートナー募集</a>
+                <a href="partner.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">ビジネスパートナー募集</a>
                 <a href="recruitment.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">採用情報</a>
                 <a href="contact.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">お問い合わせ</a>
             </div>
@@ -165,85 +178,81 @@
         <section class="py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
+                    <nav class="text-sm text-gray-400 mb-4">
+                        <a href="index.html" class="hover:text-white transition">ホーム</a>
+                        <span class="mx-2">></span>
+                        <a href="business.html" class="hover:text-white transition">事業内容</a>
+                        <span class="mx-2">></span>
+                        <span class="text-indigo-400">基幹システム導入支援</span>
+                    </nav>
                     <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                        <span class="text-indigo-400">ビジネスパートナー</span>募集
+                        <span class="text-indigo-400">基幹システム導入</span>支援
                     </h1>
-                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                        共に成長し、お客様に最適な技術支援を提供するパートナー企業様を広く募集しております。
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                        株式会社Codelithは、企業の成長と業務効率化を実現するために、基幹システムの導入・運用をトータルでサポートいたします。
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- 会社概要セクション -->
+        <!-- サービス内容セクション -->
         <section class="py-20 bg-gray-900 bg-opacity-80">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="partner-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
-                    <h2 class="text-3xl font-bold text-white mb-8 text-center">
-                        <span class="text-indigo-400">株式会社 Codelith</span> について
-                    </h2>
-                    <div class="grid md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <p class="text-gray-300 mb-6 text-lg leading-relaxed">
-                                株式会社 Codelith は、東京都荒川区を拠点に、ITシステム開発・SES事業を展開する企業です。
-                            </p>
-                            <p class="text-gray-300 mb-6 text-lg leading-relaxed">
-                                お客様に最適な技術支援を提供するため、共に成長できる <span class="text-indigo-400 font-semibold">ビジネスパートナー企業様</span> を広く募集しております。
-                            </p>
-                            <div class="flex flex-wrap gap-4">
-                                <div class="bg-indigo-900 bg-opacity-50 px-4 py-2 rounded-full">
-                                    <span class="text-white">🏢 東京都荒川区拠点</span>
-                                </div>
-                                <div class="bg-indigo-900 bg-opacity-50 px-4 py-2 rounded-full">
-                                    <span class="text-white">💻 ITシステム開発</span>
-                                </div>
-                                <div class="bg-indigo-900 bg-opacity-50 px-4 py-2 rounded-full">
-                                    <span class="text-white">👥 SES事業</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-gray-700 bg-opacity-60 rounded-xl overflow-hidden">
-                            <img src="https://picsum.photos/600/400?random=5" alt="オフィス環境" class="w-full h-auto">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- 募集対象セクション -->
-        <section class="py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center text-white mb-16">募集対象</h2>
-                <p class="text-xl text-gray-300 text-center mb-12">
-                    以下の分野に強みをお持ちの企業様を歓迎いたします：
-                </p>
+                <h2 class="text-3xl font-bold text-center text-white mb-16">サービス内容</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="partner-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
-                        <div class="text-indigo-400 text-4xl mb-4 text-center">👨‍💻</div>
-                        <h3 class="text-xl font-bold text-white mb-4 text-center">システムエンジニアリングサービス（SES）</h3>
-                        <p class="text-gray-300 text-center">高品質なSESサービスを提供する企業様</p>
+                    <div class="service-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="text-indigo-400 text-4xl mb-4 text-center">🏢</div>
+                        <h3 class="text-xl font-bold text-white mb-4 text-center">ERPシステム導入・開発・カスタマイズ</h3>
+                        <p class="text-gray-300 mb-4">SAP、Oracle、Microsoft Dynamics 等の主要ERPシステムの導入から開発、お客様のビジネスに合わせたカスタマイズまで包括的にサポート</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">SAP</span>
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">Oracle</span>
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">Dynamics</span>
+                        </div>
                     </div>
-                    <div class="partner-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
-                        <div class="text-indigo-400 text-4xl mb-4 text-center">🌐</div>
-                        <h3 class="text-xl font-bold text-white mb-4 text-center">Webアプリケーション開発</h3>
-                        <p class="text-gray-300 text-center">モダンなWeb技術に精通した開発企業様</p>
+                    
+                    <div class="service-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="text-indigo-400 text-4xl mb-4 text-center">⚙️</div>
+                        <h3 class="text-xl font-bold text-white mb-4 text-center">基幹業務システム構築</h3>
+                        <p class="text-gray-300 mb-4">会計・人事・販売・在庫・購買・生産管理システムなど、企業の基幹業務を支える各種システムの構築・統合</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">会計管理</span>
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">人事管理</span>
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">在庫管理</span>
+                        </div>
                     </div>
-                    <div class="partner-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
-                        <div class="text-indigo-400 text-4xl mb-4 text-center">📊</div>
-                        <h3 class="text-xl font-bold text-white mb-4 text-center">SAP、ERP、クラウド導入支援</h3>
-                        <p class="text-gray-300 text-center">基幹システム導入の専門企業様</p>
+                    
+                    <div class="service-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="text-indigo-400 text-4xl mb-4 text-center">🔄</div>
+                        <h3 class="text-xl font-bold text-white mb-4 text-center">システム移行支援</h3>
+                        <p class="text-gray-300 mb-4">レガシーシステムから最新システムへの移行を安全かつ効率的に実行。データ移行からシステム統合まで全面サポート</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">データ移行</span>
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">システム統合</span>
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">リスク管理</span>
+                        </div>
                     </div>
-                    <div class="partner-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
-                        <div class="text-indigo-400 text-4xl mb-4 text-center">🤖</div>
-                        <h3 class="text-xl font-bold text-white mb-4 text-center">AI・データ分析・DX関連プロジェクト</h3>
-                        <p class="text-gray-300 text-center">最新技術を活用したDX推進企業様</p>
+                    
+                    <div class="service-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="text-indigo-400 text-4xl mb-4 text-center">👨‍🏫</div>
+                        <h3 class="text-xl font-bold text-white mb-4 text-center">ユーザー教育・トレーニング支援</h3>
+                        <p class="text-gray-300 mb-4">新システムの効果的な活用のため、エンドユーザーから管理者まで、レベル別の教育プログラムを提供</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">操作研修</span>
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">管理者教育</span>
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">マニュアル作成</span>
+                        </div>
                     </div>
-                    <div class="partner-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
-                        <div class="text-indigo-400 text-4xl mb-4 text-center">🔧</div>
-                        <h3 class="text-xl font-bold text-white mb-4 text-center">ネットワーク・インフラ構築</h3>
-                        <p class="text-gray-300 text-center">インフラ構築・運用の専門企業様</p>
+                    
+                    <div class="service-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="text-indigo-400 text-4xl mb-4 text-center">🛠️</div>
+                        <h3 class="text-xl font-bold text-white mb-4 text-center">運用・保守・改善提案</h3>
+                        <p class="text-gray-300 mb-4">システム導入後の安定稼働を継続的にサポート。定期的な保守・監視から業務改善提案まで長期的にサポート</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">24/7監視</span>
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">定期保守</span>
+                            <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded text-indigo-300">改善提案</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -251,81 +260,131 @@
 
         <div class="section-divider"></div>
 
-        <!-- 協業のメリットセクション -->
-        <section class="py-20 bg-gray-900 bg-opacity-80">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center text-white mb-16">協業のメリット</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="benefit-item bg-gray-800 bg-opacity-60 p-8 rounded-xl">
-                        <div class="flex items-center mb-4">
-                            <div class="text-indigo-400 text-3xl mr-4">📈</div>
-                            <h3 class="text-xl font-bold text-white">長期安定した案件の共有</h3>
-                        </div>
-                        <p class="text-gray-300">継続的なプロジェクトを通じて、安定したビジネス関係を構築できます</p>
-                    </div>
-                    <div class="benefit-item bg-gray-800 bg-opacity-60 p-8 rounded-xl">
-                        <div class="flex items-center mb-4">
-                            <div class="text-indigo-400 text-3xl mr-4">🏙️</div>
-                            <h3 class="text-xl font-bold text-white">首都圏を中心とした豊富なプロジェクト機会</h3>
-                        </div>
-                        <p class="text-gray-300">東京都荒川区を拠点とした首都圏の多様なプロジェクトにアクセス可能です</p>
-                    </div>
-                    <div class="benefit-item bg-gray-800 bg-opacity-60 p-8 rounded-xl">
-                        <div class="flex items-center mb-4">
-                            <div class="text-indigo-400 text-3xl mr-4">🤝</div>
-                            <h3 class="text-xl font-bold text-white">信頼関係を重視した Win-Winのパートナーシップ</h3>
-                        </div>
-                        <p class="text-gray-300">お互いの強みを活かし、共に成長できる関係性を築きます</p>
-                    </div>
-                    <div class="benefit-item bg-gray-800 bg-opacity-60 p-8 rounded-xl">
-                        <div class="flex items-center mb-4">
-                            <div class="text-indigo-400 text-3xl mr-4">📋</div>
-                            <h3 class="text-xl font-bold text-white">柔軟な契約形態（準委任契約／請負契約）に対応</h3>
-                        </div>
-                        <p class="text-gray-300">プロジェクトの性質に応じて最適な契約形態を選択できます</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- 契約条件セクション -->
+        <!-- 特徴セクション -->
         <section class="py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center text-white mb-16">契約条件</h2>
-                <div class="max-w-4xl mx-auto">
-                    <div class="partner-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
-                        <div class="grid md:grid-cols-3 gap-8">
-                            <div class="text-center">
-                                <div class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <span class="text-2xl">📄</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-3">契約形態</h3>
-                                <div class="space-y-2 text-gray-300">
-                                    <p>• SES契約</p>
-                                    <p>• 準委任契約</p>
-                                    <p>• 請負契約</p>
+                <h2 class="text-3xl font-bold text-center text-white mb-16">私たちの特徴</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="feature-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="flex items-center mb-6">
+                            <div class="text-indigo-400 text-3xl mr-4">🏆</div>
+                            <h3 class="text-2xl font-bold text-white">豊富なSAP/ABAP開発経験を活かした高品質なソリューション</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            長年にわたるSAP開発の実績と深い技術的知見を基に、お客様のビジネス要件に最適化された高品質なソリューションを提供します。
+                        </p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="service-item">SAP S/4HANA導入・移行支援</li>
+                            <li class="service-item">ABAP開発・カスタマイズ</li>
+                            <li class="service-item">Fiori アプリケーション開発</li>
+                            <li class="service-item">BW/BI データウェアハウス構築</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="flex items-center mb-6">
+                            <div class="text-indigo-400 text-3xl mr-4">🎯</div>
+                            <h3 class="text-2xl font-bold text-white">業種・業務プロセスに合わせた柔軟なカスタマイズ</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            製造業、流通業、サービス業など、各業種特有の業務プロセスを深く理解し、お客様のビジネスに最適化されたシステムを構築します。
+                        </p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="service-item">業種別テンプレート活用</li>
+                            <li class="service-item">業務プロセス最適化提案</li>
+                            <li class="service-item">既存システムとの連携設計</li>
+                            <li class="service-item">段階的導入アプローチ</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="flex items-center mb-6">
+                            <div class="text-indigo-400 text-3xl mr-4">📊</div>
+                            <h3 class="text-2xl font-bold text-white">データ分析・BIツールとの連携による意思決定支援</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            基幹システムのデータを活用した高度な分析環境を構築し、経営陣の戦略的意思決定を強力にサポートします。
+                        </p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="service-item">リアルタイムダッシュボード構築</li>
+                            <li class="service-item">予測分析・AI活用</li>
+                            <li class="service-item">KPI監視システム</li>
+                            <li class="service-item">レポート自動化</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card bg-gray-800 bg-opacity-60 p-8 rounded-xl">
+                        <div class="flex items-center mb-6">
+                            <div class="text-indigo-400 text-3xl mr-4">🤝</div>
+                            <h3 class="text-2xl font-bold text-white">導入後の安定稼働と長期的なパートナーシップ</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            システム導入は始まりに過ぎません。長期的な視点でお客様のビジネス成長を支え続ける、真のパートナーシップを築きます。
+                        </p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="service-item">24時間365日監視・サポート</li>
+                            <li class="service-item">定期的な性能最適化</li>
+                            <li class="service-item">ビジネス成長に応じた拡張支援</li>
+                            <li class="service-item">技術トレンドに基づく改善提案</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 導入プロセス -->
+        <section class="py-20 bg-gray-900 bg-opacity-80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-white mb-16">導入プロセス</h2>
+                <div class="relative">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-indigo-600 hidden md:block"></div>
+                    <div class="space-y-12">
+                        <div class="flex items-center md:justify-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg md:absolute md:left-1/2 md:transform md:-translate-x-1/2">1</div>
+                            <div class="ml-6 md:ml-0 md:w-1/2 md:pr-8">
+                                <div class="bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                                    <h3 class="text-xl font-bold text-white mb-3">要件定義・現状分析</h3>
+                                    <p class="text-gray-300">お客様の現状業務プロセスを詳細に分析し、システム要件を明確化します</p>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <div class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <span class="text-2xl">💰</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-3">支払いサイト</h3>
-                                <div class="text-gray-300">
-                                    <p class="font-semibold text-indigo-400">30日</p>
-                                    <p>（末締め翌月末払い）</p>
+                        </div>
+                        
+                        <div class="flex items-center md:justify-end">
+                            <div class="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg md:absolute md:left-1/2 md:transform md:-translate-x-1/2">2</div>
+                            <div class="ml-6 md:ml-0 md:w-1/2 md:pl-8">
+                                <div class="bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                                    <h3 class="text-xl font-bold text-white mb-3">システム設計・開発</h3>
+                                    <p class="text-gray-300">要件に基づいてシステム設計を行い、カスタマイズ開発を実施します</p>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <div class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <span class="text-2xl">📱</span>
+                        </div>
+                        
+                        <div class="flex items-center md:justify-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg md:absolute md:left-1/2 md:transform md:-translate-x-1/2">3</div>
+                            <div class="ml-6 md:ml-0 md:w-1/2 md:pr-8">
+                                <div class="bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                                    <h3 class="text-xl font-bold text-white mb-3">テスト・導入準備</h3>
+                                    <p class="text-gray-300">徹底的なテストを実施し、本番環境への導入準備を行います</p>
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-3">情報共有</h3>
-                                <div class="space-y-2 text-gray-300">
-                                    <p>• 専用ポータル</p>
-                                    <p>• メールにて随時</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center md:justify-end">
+                            <div class="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg md:absolute md:left-1/2 md:transform md:-translate-x-1/2">4</div>
+                            <div class="ml-6 md:ml-0 md:w-1/2 md:pl-8">
+                                <div class="bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                                    <h3 class="text-xl font-bold text-white mb-3">本番稼働・運用開始</h3>
+                                    <p class="text-gray-300">システムを本番環境に導入し、安定稼働を確保します</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center md:justify-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg md:absolute md:left-1/2 md:transform md:-translate-x-1/2">5</div>
+                            <div class="ml-6 md:ml-0 md:w-1/2 md:pr-8">
+                                <div class="bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                                    <h3 class="text-xl font-bold text-white mb-3">継続的サポート・改善</h3>
+                                    <p class="text-gray-300">運用保守から機能拡張まで、長期的にサポートします</p>
                                 </div>
                             </div>
                         </div>
@@ -335,19 +394,19 @@
         </section>
 
         <!-- お問い合わせセクション -->
-        <section class="py-20 bg-gray-900 bg-opacity-80">
+        <section class="py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <h2 class="text-3xl font-bold text-white mb-8">パートナーシップのご相談</h2>
+                    <h2 class="text-3xl font-bold text-white mb-8">基幹システム導入のご相談</h2>
                     <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-                        ビジネスパートナーとしてのご相談やご質問がございましたら、お気軽にお問い合わせください。
+                        お客様のビジネス要件に最適な基幹システム導入について、まずはお気軽にご相談ください。
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center gap-4">
                         <a href="contact.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105">
                             お問い合わせ
                         </a>
-                        <a href="about.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all">
-                            会社概要を見る
+                        <a href="business.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all">
+                            事業内容に戻る
                         </a>
                     </div>
                 </div>
