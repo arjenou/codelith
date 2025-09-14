@@ -1,12 +1,13 @@
-
 <!-- intelligence_software_company_website/frontend/products.html -->
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="google-site-verification" content="FHkMWxhKei-kPC1p6s53oM-jSr1tTlFGNJHvLgJFQYo">
     <title>事業内容 - 株式会社Codelith</title>
+    <link rel="icon" type="image/png" href="codelith-logo.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.loli.net/css?family=Noto+Sans+SC:400,700&display=swap" rel="stylesheet">
     <style>
@@ -16,24 +17,30 @@
             color: #e6e6e6;
             min-height: 100vh;
         }
+
         .nav-link {
             transition: all 0.3s ease;
         }
+
         .nav-link:hover {
             transform: translateY(-2px);
             text-shadow: 0 0 10px rgba(100, 149, 237, 0.8);
         }
+
         .product-card {
             transition: all 0.3s ease;
         }
+
         .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(79, 70, 229, 0.3);
         }
+
         .tab-button.active {
             background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
             color: white;
         }
+
         #particles-js {
             position: absolute;
             width: 100%;
@@ -42,13 +49,16 @@
             left: 0;
             z-index: -1;
         }
+
         .solution-section {
             background: rgba(31, 41, 55, 0.6);
             border-radius: 0.5rem;
         }
+
         .dropdown {
             position: relative;
         }
+
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -65,11 +75,13 @@
             white-space: nowrap;
             z-index: 1000;
         }
+
         .dropdown:hover .dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
+
         .dropdown-item {
             display: block;
             padding: 0.75rem 1rem;
@@ -79,6 +91,7 @@
             border-radius: 0.375rem;
             margin: 0.25rem;
         }
+
         .dropdown-item:hover {
             background: rgba(79, 70, 229, 0.2);
             color: white;
@@ -86,73 +99,91 @@
         }
     </style>
 </head>
+
 <body class="antialiased">
     <!-- パーティクル背景 -->
     <div id="particles-js"></div>
-    
+
     <!-- ナビゲーションバー -->
     <nav class="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <a href="index.html" class="flex items-center text-2xl font-bold text-indigo-400 hover:text-indigo-300 transition-colors duration-200 cursor-pointer">
-                            <img src="codelith-logo.png" alt="Codelith Logo" class="w-8 h-8 mr-2">
-                            株式会社Codelith
+                        <a href="index.html" class="flex items-center transition-colors duration-200 cursor-pointer">
+                            <img src="codelith-logo.png" alt="Codelith Logo" class="w-12 h-12">
                         </a>
                     </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="about.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">会社概要</a>
+                        <a href="about.html"
+                            class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">会社概要</a>
                         <div class="dropdown">
-                            <a href="business.html" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium bg-indigo-900 flex items-center">
+                            <a href="business.html"
+                                class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium bg-indigo-900 flex items-center">
                                 事業内容
                                 <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
                                 </svg>
                             </a>
                             <div class="dropdown-menu">
                                 <a href="business.html" class="dropdown-item">事業内容一覧</a>
                                 <a href="custom-web-system.html" class="dropdown-item">カスタムWebシステム</a>
-                                <a href="core-system-support.html" class="dropdown-item">基幹システム導入</a>
+                                <a href="core-system-support.html" class="dropdown-item">ERPシステム導入</a>
                             </div>
                         </div>
-                        <a href="partner.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ビジネスパートナー募集</a>
-                        <a href="recruitment.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">採用情報</a>
-                        <a href="contact.html" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">お問い合わせ</a>
+                        <a href="partner.html"
+                            class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ビジネスパートナー募集</a>
+                        <a href="recruitment.html"
+                            class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">採用情報</a>
+                        <a href="contact.html"
+                            class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">お問い合わせ</a>
                     </div>
                 </div>
                 <div class="md:hidden">
                     <button class="mobile-menu-button p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
-        
+
         <!-- Mobile menu -->
         <div class="mobile-menu hidden md:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900 bg-opacity-95">
-                <a href="about.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">会社概要</a>
+                <a href="about.html"
+                    class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">会社概要</a>
                 <div class="mobile-dropdown">
-                    <button class="mobile-dropdown-button nav-link text-white block px-3 py-2 rounded-md text-base font-medium bg-indigo-900 w-full text-left flex items-center justify-between">
+                    <button
+                        class="mobile-dropdown-button nav-link text-white block px-3 py-2 rounded-md text-base font-medium bg-indigo-900 w-full text-left flex items-center justify-between">
                         事業内容
-                        <svg class="h-4 w-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        <svg class="h-4 w-4 transform transition-transform" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
                         </svg>
                     </button>
                     <div class="mobile-dropdown-menu hidden pl-4 space-y-1">
-                        <a href="business.html" class="nav-link text-gray-400 hover:text-white block px-3 py-2 rounded-md text-sm font-medium">事業内容一覧</a>
-                        <a href="custom-web-system.html" class="nav-link text-gray-400 hover:text-white block px-3 py-2 rounded-md text-sm font-medium">カスタムWebシステム</a>
-                        <a href="core-system-support.html" class="nav-link text-gray-400 hover:text-white block px-3 py-2 rounded-md text-sm font-medium">基幹システム導入</a>
+                        <a href="business.html"
+                            class="nav-link text-gray-400 hover:text-white block px-3 py-2 rounded-md text-sm font-medium">事業内容一覧</a>
+                        <a href="custom-web-system.html"
+                            class="nav-link text-gray-400 hover:text-white block px-3 py-2 rounded-md text-sm font-medium">カスタムWebシステム</a>
+                        <a href="core-system-support.html"
+                            class="nav-link text-gray-400 hover:text-white block px-3 py-2 rounded-md text-sm font-medium">基幹システム導入</a>
                     </div>
                 </div>
-                <a href="partner.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">ビジネスパートナー募集</a>
-                <a href="recruitment.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">採用情報</a>
-                <a href="contact.html" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">お問い合わせ</a>
+                <a href="partner.html"
+                    class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">ビジネスパートナー募集</a>
+                <a href="recruitment.html"
+                    class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">採用情報</a>
+                <a href="contact.html"
+                    class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">お問い合わせ</a>
             </div>
         </div>
     </nav>
@@ -163,7 +194,8 @@
         <section class="py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">私たちの<span class="text-indigo-400">製品</span></h1>
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">私たちの<span
+                            class="text-indigo-400">製品</span></h1>
                     <p class="text-xl text-gray-300 max-w-3xl mx-auto">
                         Webシステム開発から人材育成まで、お客様のビジネス成長を支える包括的なITソリューションを提供します
                     </p>
@@ -174,30 +206,23 @@
                     <button class="tab-button active px-6 py-2 rounded-full text-white font-medium transition-all">
                         すべての製品
                     </button>
-                    <button class="tab-button px-6 py-2 rounded-full text-gray-300 bg-gray-800 hover:bg-gray-700 font-medium transition-all">
+                    <button
+                        class="tab-button px-6 py-2 rounded-full text-gray-300 bg-gray-800 hover:bg-gray-700 font-medium transition-all">
                         Webシステム
                     </button>
-                    <button class="tab-button px-6 py-2 rounded-full text-gray-300 bg-gray-800 hover:bg-gray-700 font-medium transition-all">
+                    <button
+                        class="tab-button px-6 py-2 rounded-full text-gray-300 bg-gray-800 hover:bg-gray-700 font-medium transition-all">
                         ECソリューション
                     </button>
-                    <button class="tab-button px-6 py-2 rounded-full text-gray-300 bg-gray-800 hover:bg-gray-700 font-medium transition-all">
+                    <button
+                        class="tab-button px-6 py-2 rounded-full text-gray-300 bg-gray-800 hover:bg-gray-700 font-medium transition-all">
                         人材育成
                     </button>
                 </div>
 
-                <!-- 製品ソリューション -->
                 <div class="solution-section p-8 mb-12">
                     <h2 class="text-2xl font-bold text-white mb-6">Webシステムソリューション</h2>
                     <div class="grid md:grid-cols-3 gap-6">
-                        <div class="product-card bg-gray-800 bg-opacity-60 p-6 rounded-xl">
-                            <h3 class="text-xl font-bold text-white mb-3">カスタムWebシステム</h3>
-                            <p class="text-gray-300 mb-4">お客様のビジネスニーズに合わせた完全カスタマイズのWebシステム開発</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded">受託開発</span>
-                                <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded">フルスタック</span>
-                            </div>
-                            <a href="custom-web-system.html" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細を見る →</a>
-                        </div>
                         <div class="product-card bg-gray-800 bg-opacity-60 p-6 rounded-xl">
                             <h3 class="text-xl font-bold text-white mb-3">基幹システム導入</h3>
                             <p class="text-gray-300 mb-4">中長期的に経営管理を支える基幹システムの導入を支援（SAPなど）</p>
@@ -206,6 +231,16 @@
                                 <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded">CRM</span>
                             </div>
                             <a href="core-system-support.html" class="text-indigo-400 hover:text-indigo-300 font-medium">詳細を見る →</a>
+                        </div>
+                        <div class="product-card bg-gray-800 bg-opacity-60 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-3">カスタムWebシステム</h3>
+                            <p class="text-gray-300 mb-4">お客様のビジネスニーズに合わせた完全カスタマイズのWebシステム開発</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded">受託開発</span>
+                                <span class="text-xs bg-indigo-900 bg-opacity-50 px-2 py-1 rounded">フルスタック</span>
+                            </div>
+                            <a href="custom-web-system.html"
+                                class="text-indigo-400 hover:text-indigo-300 font-medium">詳細を見る →</a>
                         </div>
                         <div class="product-card bg-gray-800 bg-opacity-60 p-6 rounded-xl">
                             <h3 class="text-xl font-bold text-white mb-3">システム移行サービス</h3>
@@ -295,21 +330,24 @@
                 <h2 class="text-3xl font-bold text-center text-white mb-16">製品優位性</h2>
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="text-center">
-                        <div class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div
+                            class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-2xl">⚡</span>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">高性能</h3>
                         <p class="text-gray-300">最新技術を活用した高性能なシステムアーキテクチャで、大規模なデータ処理も高速に実行</p>
                     </div>
                     <div class="text-center">
-                        <div class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div
+                            class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-2xl">🔒</span>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">高セキュリティ</h3>
                         <p class="text-gray-300">業界標準を超えるセキュリティ対策で、お客様のデータとシステムを強力に保護</p>
                     </div>
                     <div class="text-center">
-                        <div class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div
+                            class="bg-indigo-900 bg-opacity-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-2xl">🧠</span>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">カスタマイズ性</h3>
@@ -336,7 +374,8 @@
                     <ul class="space-y-2">
                         <li><a href="about.html" class="text-gray-400 hover:text-white transition">会社概要</a></li>
                         <li><a href="business.html" class="text-gray-400 hover:text-white transition">事業内容</a></li>
-                        <li><a href="partner.html" class="text-gray-400 hover:text-white transition">ビジネスパートナー募集</a></li>
+                        <li><a href="partner.html" class="text-gray-400 hover:text-white transition">ビジネスパートナー募集</a>
+                        </li>
                         <li><a href="recruitment.html" class="text-gray-400 hover:text-white transition">採用情報</a></li>
                         <li><a href="contact.html" class="text-gray-400 hover:text-white transition">お問い合わせ</a></li>
                     </ul>
@@ -368,7 +407,7 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // パーティクル効果初期化
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             particlesJS('particles-js', {
                 "particles": {
                     "number": {
@@ -478,8 +517,8 @@
             // モバイルメニュー切り替え
             const mobileMenuButton = document.querySelector('.mobile-menu-button');
             const mobileMenu = document.querySelector('.mobile-menu');
-            
-            mobileMenuButton.addEventListener('click', function() {
+
+            mobileMenuButton.addEventListener('click', function () {
                 mobileMenu.classList.toggle('hidden');
             });
 
@@ -487,9 +526,9 @@
             const mobileDropdownButton = document.querySelector('.mobile-dropdown-button');
             const mobileDropdownMenu = document.querySelector('.mobile-dropdown-menu');
             const dropdownArrow = mobileDropdownButton.querySelector('svg');
-            
+
             if (mobileDropdownButton && mobileDropdownMenu) {
-                mobileDropdownButton.addEventListener('click', function() {
+                mobileDropdownButton.addEventListener('click', function () {
                     mobileDropdownMenu.classList.toggle('hidden');
                     dropdownArrow.classList.toggle('rotate-180');
                 });
@@ -498,7 +537,7 @@
             // 製品分類切り替え
             const tabButtons = document.querySelectorAll('.tab-button');
             tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     tabButtons.forEach(btn => btn.classList.remove('active', 'text-white'));
                     tabButtons.forEach(btn => btn.classList.add('text-gray-300', 'bg-gray-800'));
                     this.classList.add('active', 'text-white');
@@ -509,4 +548,5 @@
         });
     </script>
 </body>
+
 </html>
