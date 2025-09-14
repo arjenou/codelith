@@ -558,16 +558,31 @@
                     const result = await response.json();
 
                     if (response.ok) {
-                        // 成功時の処理
-                        contactForm.reset();
-                        alert('お問い合わせ内容を送信しました。折り返しご連絡させていただきます。');
-                        
-                        // localStorageにも保存（バックアップとして）
-                        let contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
-                        contacts.push({...formData, timestamp: new Date().toISOString(), status: 'sent'});
-                        localStorage.setItem('contacts', JSON.stringify(contacts));
+                        // API 调用成功，但需要检查实际结果
+                        if (result.success) {
+                            // 邮件发送成功
+                            contactForm.reset();
+                            alert(result.message || 'お問い合わせ内容を送信しました。折り返しご連絡させていただきます。');
+                            
+                            // localStorageにも保存（バックアップとして）
+                            let contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+                            contacts.push({...formData, timestamp: new Date().toISOString(), status: 'sent'});
+                            localStorage.setItem('contacts', JSON.stringify(contacts));
+                        } else if (result.fallback) {
+                            // 邮件发送失败但内容已保存
+                            contactForm.reset();
+                            alert(result.message || 'お問い合わせ内容は受信いたしました。技術的な問題により自動メール送信ができませんでしたが、内容は正常に記録されており、24時間以内にご返信いたします。');
+                            
+                            // localStorageにも保存（状态标记为fallback）
+                            let contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+                            contacts.push({...formData, timestamp: new Date().toISOString(), status: 'fallback'});
+                            localStorage.setItem('contacts', JSON.stringify(contacts));
+                        } else {
+                            // 其他错误情况
+                            throw new Error(result.message || 'メール送信に失敗いたしました');
+                        }
                     } else {
-                        // エラー時の処理
+                        // HTTP 错误
                         throw new Error(result.error || 'メール送信に失敗いたしました');
                     }
                 } catch (error) {

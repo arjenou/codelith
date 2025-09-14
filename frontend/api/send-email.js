@@ -89,7 +89,7 @@ ${message}
     } catch (web3Error) {
       console.error('Web3Forms failed, trying direct email approach:', web3Error);
       
-      // 备用方案：记录到日志并模拟成功（用于测试）
+      // 备用方案：记录到日志但告知用户真实状态
       console.log('=== EMAIL CONTENT FOR MANUAL FORWARDING ===');
       console.log('TO: wangyunjie1101@gmail.com');
       console.log('FROM:', email);
@@ -98,12 +98,12 @@ ${message}
       console.log(emailContent);
       console.log('=== END EMAIL CONTENT ===');
       
-      // 暂时返回成功，以便测试表单功能
-      // 实际的邮件内容已记录在日志中，可以手动处理
+      // 告知用户邮件发送失败，但内容已保存
       return res.status(200).json({ 
-        success: true, 
-        message: 'お問い合わせを受け付けました。内容を確認次第、24時間以内にご返信いたします。',
-        note: 'Email logged for manual processing'
+        success: false, 
+        message: 'メール送信に一時的な問題が発生しましたが、お問い合わせ内容は正常に受信いたしました。24時間以内にご返信いたします。',
+        fallback: true,
+        note: 'Content saved for manual processing'
       });
     }
 
