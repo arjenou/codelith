@@ -20,7 +20,7 @@ module.exports = async function handler(req, res) {
       service: 'gmail',
       auth: {
         user: 'wangyunjie1101@gmail.com', // 发送邮件的 Gmail 账户
-        pass: 'ibfk mjwb uwwx cefn'        // Gmail 应用密码
+        pass: 'ibfkmjwbuwwxcefn'        // Gmail 应用密码
       }
     });
 
@@ -91,8 +91,14 @@ module.exports = async function handler(req, res) {
 
   } catch (error) {
     console.error('メール送信失敗:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      command: error.command
+    });
     res.status(500).json({ 
-      error: 'メール送信に失敗いたしました。しばらく時間をおいてから再度お試しいただくか、直接お電話にてお問い合わせください。'
+      error: 'メール送信に失敗いたしました。しばらく時間をおいてから再度お試いいただくか、直接お電話にてお問い合わせください。',
+      details: error.message
     });
   }
 }
