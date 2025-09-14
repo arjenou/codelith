@@ -19,14 +19,14 @@ module.exports = async function handler(req, res) {
     const transporter = nodemailer.createTransporter({
       service: 'gmail',
       auth: {
-        user: process.env.GMAIL_USER, // 发送邮件的 Gmail 账户
-        pass: process.env.GMAIL_PASS  // Gmail 应用密码
+        user: 'wangyunjie1101@gmail.com', // 发送邮件的 Gmail 账户
+        pass: 'ibfk mjwb uwwx cefn'        // Gmail 应用密码
       }
     });
 
     // 邮件选项
     const mailOptions = {
-      from: process.env.GMAIL_USER,
+      from: 'wangyunjie1101@gmail.com',
       to: 'wangyunjie1101@gmail.com', // 接收邮件的邮箱
       subject: `【株式会社Codelith】新しいお問い合わせ: ${subject}`,
       html: `
@@ -92,8 +92,7 @@ module.exports = async function handler(req, res) {
   } catch (error) {
     console.error('メール送信失敗:', error);
     res.status(500).json({ 
-      error: 'メール送信に失敗いたしました。しばらく時間をおいてから再度お試しいただくか、直接お電話にてお問い合わせください。',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      error: 'メール送信に失敗いたしました。しばらく時間をおいてから再度お試しいただくか、直接お電話にてお問い合わせください。'
     });
   }
 }
