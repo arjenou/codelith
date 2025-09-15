@@ -8,7 +8,9 @@
     "build": "exit 0",
     "start": "vercel dev"
   },
-  "dependencies": {},
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
   "keywords": ["website", "codelith", "vercel"],
   "author": "株式会社Codelith",
   "license": "MIT"

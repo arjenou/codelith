@@ -126,109 +126,26 @@ module.exports = async function handler(req, res) {
       `
     };
 
-    // 发送邮件 - 使用 Web API 避免地理位置限制
-    console.log('Attempting to send email via Web API...');
+    // 发送邮件 - 使用纯 SMTP 方案
+    console.log('Attempting to send email via SMTP...');
     
     try {
-      // 使用 Resend API (免费且不受地理位置限制)
-      const response = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer re_demo_key', // 临时演示密钥
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: 'info@codelith.co.jp',
-          to: ['info@codelith.co.jp'],
-          subject: `【株式会社Codelith】新しいお問い合わせ - ${name}様`,
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
-              <div style="background-color: #4f46e5; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-                <h3 style="margin: 0; font-size: 24px;">株式会社Codelith</h3>
-                <p style="margin: 5px 0 0 0; font-size: 16px;">新しいお問い合わせ - ${name}様より</p>
-              </div>
-              
-              <div style="background-color: white; padding: 30px; border-radius: 0 0 8px 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                <h2 style="color: #4f46e5; margin-top: 0;">お客様情報</h2>
-                
-                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-                  <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold; width: 120px;">お名前:</td>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${name}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">メールアドレス:</td>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee;"><a href="mailto:${email}">${email}</a></td>
-                  </tr>
-                  ${phone ? `
-                  <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">電話番号:</td>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${phone}</td>
-                  </tr>
-                  ` : ''}
-                  <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">件名:</td>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${subject}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold;">送信日時:</td>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee;">${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}</td>
-                  </tr>
-                </table>
-                
-                ${message ? `
-                <h3 style="color: #4f46e5; margin-top: 30px;">お問い合わせ内容</h3>
-                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #4f46e5;">
-                  <p style="margin: 0; line-height: 1.6; white-space: pre-wrap;">${message}</p>
-                </div>
-                ` : ''}
-              </div>
-              
-              <div style="text-align: center; margin-top: 20px; color: #666; font-size: 12px;">
-                <p>このメールは株式会社Codelithのウェブサイトから自動送信されました。</p>
-                <p>お客様への返信は ${email} へお送りください。</p>
-              </div>
-            </div>
-          `,
-          reply_to: email
-        })
+      const info = await transporter.sendMail(mailOptions);
+      
+      console.log('メール送信成功:', info.messageId);
+      
+      return res.status(200).json({ 
+        success: true, 
+        message: 'お問い合わせを送信いたしました。24時間以内にご返信いたします。',
+        messageId: info.messageId 
       });
-
-      if (response.status === 422) {
-        // 演示密钥的限制，使用备用日志方案
-        console.log('Demo API key used, logging email content for manual processing:');
-        console.log('=== EMAIL CONTENT FOR MANUAL FORWARDING ===');
-        console.log('TO: info@codelith.co.jp');
-        console.log('FROM:', email);
-        console.log('SUBJECT: 【株式会社Codelith】新しいお問い合わせ -', name + '様');
-        console.log('客户信息:');
-        console.log('- 姓名:', name);
-        console.log('- 邮箱:', email);
-        console.log('- 电话:', phone || 'なし');
-        console.log('- 主题:', subject);
-        console.log('- 内容:', message);
-        console.log('- 时间:', new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }));
-        console.log('=== END EMAIL CONTENT ===');
-        
-        return res.status(200).json({ 
-          success: true, 
-          message: 'お問い合わせを受け付けました。内容を確認次第、24時間以内にご返信いたします。',
-          note: 'Content logged for manual processing'
-        });
-      } else if (response.ok) {
-        const result = await response.json();
-        console.log('Email sent successfully via Resend:', result.id);
-        
-        return res.status(200).json({ 
-          success: true, 
-          message: 'お問い合わせを送信いたしました。24時間以内にご返信いたします。',
-          messageId: result.id 
-        });
-      } else {
-        throw new Error(`Resend API error: ${response.status}`);
-      }
     } catch (mailError) {
       console.error('メール送信失敗:', mailError);
+      console.error('Mail error details:', {
+        code: mailError.code,
+        command: mailError.command,
+        response: mailError.response
+      });
       
       // 备用方案：记录到日志
       console.log('=== EMAIL CONTENT FOR MANUAL FORWARDING ===');
