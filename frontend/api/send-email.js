@@ -136,13 +136,6 @@ module.exports = async function handler(req, res) {
       message: 'お問い合わせを送信いたしました。24時間以内にご返信いたします。',
       messageId: info.messageId 
     });
-
-    } catch (error) {
-      console.error('メール送信失敗:', error);
-      return res.status(500).json({ 
-        error: 'メールの送信に失敗しました。しばらく時間をおいて再度お試しください。' 
-      });
-    }
   } catch (globalError) {
     console.error('Global error in API handler:', globalError);
     
