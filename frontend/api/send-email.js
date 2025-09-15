@@ -127,15 +127,30 @@ module.exports = async function handler(req, res) {
     };
 
     // 发送邮件
-    const info = await transporter.sendMail(mailOptions);
+    try {
+      const info = await transporter.sendMail(mailOptions);
+      
+      console.log('メール送信成功:', info.messageId);
+      
+      return res.status(200).json({ 
+        success: true, 
+        message: 'お問い合わせを送信いたしました。24時間以内にご返信いたします。',
+        messageId: info.messageId 
+      });
+    } catch (mailError) {
+      console.error('メール送信失敗:', mailError);
+      console.error('Mail error details:', {
+        code: mailError.code,
+        command: mailError.command,
+        response: mailError.response
+      });
+      
+      return res.status(500).json({ 
+        error: 'メールの送信に失敗しました。しばらく時間をおいて再度お試しください。',
+        details: mailError.message
+      });
+    }
     
-    console.log('メール送信成功:', info.messageId);
-    
-    return res.status(200).json({ 
-      success: true, 
-      message: 'お問い合わせを送信いたしました。24時間以内にご返信いたします。',
-      messageId: info.messageId 
-    });
   } catch (globalError) {
     console.error('Global error in API handler:', globalError);
     
