@@ -6,45 +6,19 @@ let transporter;
 try {
   nodemailer = require('nodemailer');
   
-  // 创建邮件传输器 - 尝试多种 SMTP 配置
-  const smtpConfigs = [
-    // 配置 1: 如果有专用的 SMTP 服务器
-    {
-      host: 'smtp.codelith.co.jp',
-      port: 587,
-      secure: false,
-      auth: {
-        user: 'info@codelith.co.jp',
-        pass: 'infocodelith123!'
-      },
-      tls: { rejectUnauthorized: false }
+  // 创建邮件传输器 - 使用正确的 SMTP 服务器信息
+  transporter = nodemailer.createTransporter({
+    host: 'mail1027.onamae.ne.jp', // 从截图中获取的 SMTP 服务器
+    port: 587, // SSL接続なし の場合
+    secure: false, // 587 端口不使用 SSL
+    auth: {
+      user: 'info@codelith.co.jp',
+      pass: 'infocodelith123!'
     },
-    // 配置 2: 通用邮件服务器配置
-    {
-      host: 'mail.codelith.co.jp',
-      port: 587,
-      secure: false,
-      auth: {
-        user: 'info@codelith.co.jp',
-        pass: 'infocodelith123!'
-      },
-      tls: { rejectUnauthorized: false }
-    },
-    // 配置 3: 使用 SSL 端口
-    {
-      host: 'smtp.codelith.co.jp',
-      port: 465,
-      secure: true,
-      auth: {
-        user: 'info@codelith.co.jp',
-        pass: 'infocodelith123!'
-      },
-      tls: { rejectUnauthorized: false }
+    tls: {
+      rejectUnauthorized: false
     }
-  ];
-
-  // 使用第一个配置作为默认
-  transporter = nodemailer.createTransporter(smtpConfigs[0]);
+  });
   
   console.log('Nodemailer loaded successfully');
 } catch (loadError) {
