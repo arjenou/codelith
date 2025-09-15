@@ -532,9 +532,12 @@
             contactForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
-                // 送信ボタンを無効化
+                // 送信ボタンを無効化し、視覚的に変更
                 submitButton.disabled = true;
                 submitButton.textContent = '送信中...';
+                submitButton.style.backgroundColor = '#9CA3AF';
+                submitButton.style.cursor = 'not-allowed';
+                submitButton.style.opacity = '0.6';
 
                 try {
                     // フォームデータを取得
@@ -603,9 +606,12 @@
                     contacts.push(formData);
                     localStorage.setItem('contacts', JSON.stringify(contacts));
                 } finally {
-                    // 送信ボタンを再有効化
+                    // 送信ボタンを再有効化し、元の状態に戻す
                     submitButton.disabled = false;
                     submitButton.textContent = '送信する';
+                    submitButton.style.backgroundColor = '';
+                    submitButton.style.cursor = '';
+                    submitButton.style.opacity = '';
                 }
             });
 
