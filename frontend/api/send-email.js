@@ -6,14 +6,45 @@ let transporter;
 try {
   nodemailer = require('nodemailer');
   
-  // 创建邮件传输器
-  transporter = nodemailer.createTransporter({
-    service: 'gmail',
-    auth: {
-      user: 'wangyunjie1101@gmail.com',
-      pass: 'ibfkmjwbuwwxcefn' // 你的 Gmail 应用密码
+  // 创建邮件传输器 - 尝试多种 SMTP 配置
+  const smtpConfigs = [
+    // 配置 1: 如果有专用的 SMTP 服务器
+    {
+      host: 'smtp.codelith.co.jp',
+      port: 587,
+      secure: false,
+      auth: {
+        user: 'info@codelith.co.jp',
+        pass: 'infocodelith123!'
+      },
+      tls: { rejectUnauthorized: false }
+    },
+    // 配置 2: 通用邮件服务器配置
+    {
+      host: 'mail.codelith.co.jp',
+      port: 587,
+      secure: false,
+      auth: {
+        user: 'info@codelith.co.jp',
+        pass: 'infocodelith123!'
+      },
+      tls: { rejectUnauthorized: false }
+    },
+    // 配置 3: 使用 SSL 端口
+    {
+      host: 'smtp.codelith.co.jp',
+      port: 465,
+      secure: true,
+      auth: {
+        user: 'info@codelith.co.jp',
+        pass: 'infocodelith123!'
+      },
+      tls: { rejectUnauthorized: false }
     }
-  });
+  ];
+
+  // 使用第一个配置作为默认
+  transporter = nodemailer.createTransporter(smtpConfigs[0]);
   
   console.log('Nodemailer loaded successfully');
 } catch (loadError) {
@@ -64,7 +95,7 @@ module.exports = async function handler(req, res) {
 
     // 邮件内容（基于成功的模板）
     const mailOptions = {
-      from: 'wangyunjie1101@gmail.com', // 必须使用验证过的发送邮箱
+      from: 'info@codelith.co.jp', // 使用公司邮箱发送
       to: 'wangyunjie1101@gmail.com', // 发送到指定的 Gmail
       replyTo: email, // 回复地址设置为填写表格的人的邮箱
       subject: `【株式会社Codelith】新しいお問い合わせ - ${name}様`,
