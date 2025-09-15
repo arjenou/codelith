@@ -70,7 +70,7 @@ module.exports = async function handler(req, res) {
     // 邮件内容（基于成功的模板）
     const mailOptions = {
       from: 'info@codelith.co.jp', // 使用公司邮箱发送
-      to: 'wangyunjie1101@gmail.com', // 发送到指定的 Gmail
+      to: 'info@codelith.co.jp', // 发送到公司邮箱
       replyTo: email, // 回复地址设置为填写表格的人的邮箱
       subject: `【株式会社Codelith】新しいお問い合わせ - ${name}様`,
       html: `
