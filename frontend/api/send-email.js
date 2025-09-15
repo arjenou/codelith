@@ -7,7 +7,7 @@ try {
   nodemailer = require('nodemailer');
   
   // 创建邮件传输器 - 使用正确的 SMTP 服务器信息
-  transporter = nodemailer.createTransporter({
+  transporter = nodemailer.createTransport({
     host: 'mail1027.onamae.ne.jp', // 从截图中获取的 SMTP 服务器
     port: 587, // SSL接続なし の場合
     secure: false, // 587 端口不使用 SSL
