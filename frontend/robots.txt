@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://codelith.co.jp/sitemap.xml
+
+# Block access to sensitive directories
+Disallow: /api/
+Disallow: /.env
+Disallow: /node_modules/
